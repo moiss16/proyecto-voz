@@ -35,34 +35,25 @@ def alexa_speak(audio_string):
 
 def respond(voice_data):
     if 'como te llamas' in voice_data:
-        alexa_speak('Mi nombre es cuentacuentos')
+        alexa_speak('soy walter mercado y vengo a darte tu horoscopo')
     if 'tiempo' in voice_data:
         alexa_speak(ctime())
 
-    if 'cuento' in voice_data:
-        buscar = record_audio('Que cuento buscar?')
-        url = 'https://www.youtube.com/results?search_query=' + buscar
+    if 'horoscopo' in voice_data:
+        buscar = record_audio('Que horoscopo buscas hoy?')
+        url = 'https://www.lecturas.com/horoscopo/' + buscar
         webbrowser.get().open(url)
         alexa_speak('Esto fue lo que encontre para: ' + buscar)
 
-    if 'buscar' in voice_data:
-        buscar = record_audio('Que cuento ?')
-        url = 'https://arbolabc.com/cuentos-clasicos-infantiles/' + buscar #pinocho, 
-        webbrowser.get().open(url)
-        alexa_speak('Esto fue lo que encontre para: ' + buscar)
 
     if 'callate' in voice_data:
         exit()
 
 
 
-#print('Como te puedo ayudar?')
-#voice_data = record_audio()
-#respond(voice_data)
-
 
 time.sleep(1)
-alexa_speak('Como te puedo ayudar?')
+alexa_speak('Que otro horoscopo quieres?')
 while 1:
     voice_data = record_audio()
     respond(voice_data)
